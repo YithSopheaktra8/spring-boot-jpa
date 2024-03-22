@@ -16,7 +16,7 @@ public interface ProductService {
 
     ProductResponse editProductByUuid(String uuid, ProductEditRequest request);
 
-    void deleteProductByUuid(String uuid);
+    void deleteByUuid(String uuid);
 
     void createProduct(ProductCreateRequest request);
 

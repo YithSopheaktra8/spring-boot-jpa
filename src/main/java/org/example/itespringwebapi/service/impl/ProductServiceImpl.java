@@ -77,14 +77,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void deleteProductByUuid(String uuid) {
+    public void deleteByUuid(String uuid) {
+        log.info("product uuid {}",uuid);
         if(!productRepository.existsByUuid(uuid)){
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND,
                     "Product has not been found!"
             );
         }
-        productRepository.deleteByUuid(uuid);
+        Product product = this.productRepository.findProductByUuid(uuid);
+        productRepository.deleteById(product.getId());
     }
 
     @Override
